@@ -1,0 +1,12 @@
+library(dplyr)
+MechaCar_mpg <-read.csv(file="MechaCar_mpg.csv", check.names=F,stringsAsFactors = F)
+# View(MechaCar_mpg)
+Del_one <- lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD, data=MechaCar_mpg)
+summary(Del_one)
+Suspension_Coil <-read.csv(file="Suspension_Coil.csv", check.names=F,stringsAsFactors = F)
+View(Suspension_Coil)
+Del_two <- Suspension_Coil %>% summarize(mean=mean(PSI), median=median(PSI), sd=sd(PSI), variance=var(PSI))
+Del_two
+View(Del_two)
+Del_twoSummary <- Suspension_Coil %>% group_by (Manufacturing_Lot) %>% summarize(mean=mean(PSI), median=median(PSI), sd=sd(PSI), variance=var(PSI), .groups = "keep")
+View(Del_twoSummary)
