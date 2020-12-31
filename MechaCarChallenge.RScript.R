@@ -10,3 +10,7 @@ Del_two
 View(Del_two)
 Del_twoSummary <- Suspension_Coil %>% group_by (Manufacturing_Lot) %>% summarize(mean=mean(PSI), median=median(PSI), sd=sd(PSI), variance=var(PSI), .groups = "keep")
 View(Del_twoSummary)
+t.test(Suspension_Coil$PSI, mu=1500)
+t.test(subset(Suspension_Coil, Manufacturing_Lot == "Lot1")$PSI, mu=1500)
+t.test(subset(Suspension_Coil, Manufacturing_Lot == "Lot2")$PSI, mu=1500)
+t.test(subset(Suspension_Coil, Manufacturing_Lot == "Lot3")$PSI, mu=1500)
